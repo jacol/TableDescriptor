@@ -5,19 +5,50 @@ using System.Text;
 
 namespace TableDescriptor.DescriptorObjects
 {
+    /// <summary>
+    /// Class that takes table description as string and parse it to simple Descriptor classes - column names, rows and cells
+    /// </summary>
     internal class DescriptorTable
     {
+        #region Private Fields
+
         private readonly string [] ColumnSeparators =  { "|" };
         private readonly string[] LineSeparators = { Environment.NewLine };
 
-        internal IEnumerable<DescriptorRow> Rows { get; private set; }
-        internal IEnumerable<string> ColumnNames { get; private set; }
-
-        internal bool AreDefinedColumnNames { get { return ColumnNames != null && ColumnNames.Count() > 0; } }
-        internal bool AreDefinedRows { get { return Rows != null && Rows.Count() > 0; } }
-
         private string tableString;
 
+        #endregion
+
+        #region Internal Properties
+
+        /// <summary>
+        /// Collection that represents each row as separate DescriptorRow class
+        /// </summary>
+        internal IEnumerable<DescriptorRow> Rows { get; private set; }
+
+        /// <summary>
+        /// Collection that represents column names as strings
+        /// </summary>
+        internal IEnumerable<string> ColumnNames { get; private set; }
+
+        /// <summary>
+        /// Property indicates if there are any columns defined
+        /// </summary>
+        internal bool AreDefinedColumnNames { get { return ColumnNames != null && ColumnNames.Count() > 0; } }
+
+        /// <summary>
+        /// Property indicates if there are any rows defined
+        /// </summary>
+        internal bool AreDefinedRows { get { return Rows != null && Rows.Count() > 0; } }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor take string which is table representation
+        /// </summary>
+        /// <param name="tableString"></param>
         internal DescriptorTable(string tableString)
         {
             if (string.IsNullOrWhiteSpace(tableString))
@@ -28,6 +59,13 @@ namespace TableDescriptor.DescriptorObjects
             this.tableString = tableString;
         }
 
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        /// Method use private field tableString passed to ctor and parse it to DescriptorRows and DescriptorCells
+        /// </summary>
         internal void ParseTable()
         {
             string[] lines = tableString.Split(LineSeparators, StringSplitOptions.RemoveEmptyEntries);
@@ -38,7 +76,11 @@ namespace TableDescriptor.DescriptorObjects
 
             this.ColumnNames = ParseColumnNames(lines[0]);
             this.Rows = ParseRows(lines.Skip(1));
-        }        
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private IEnumerable<string> ParseColumnNames(string firstLine)
         {
@@ -64,5 +106,7 @@ namespace TableDescriptor.DescriptorObjects
                 yield return new DescriptorRow(values.Select(v => v.Trim()));
             }
         }
+
+        #endregion
     }
 }

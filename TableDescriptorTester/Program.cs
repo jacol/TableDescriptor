@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace TableDescriptor
+namespace TableDescriptorTester
 {
-    public class Program
+    class Program
     {
-        public static void Main(string [] args)
+        static void Main(string[] args)
         {
             string t1 = File.ReadAllText(@"Examples\Table1.txt");
 
 
-            DescriptorObjects.DescriptorTable table = new DescriptorObjects.DescriptorTable(t1);
+            TableDescriptor.DescriptorObjects.DescriptorTable table = new TableDescriptor.DescriptorObjects.DescriptorTable(t1);
             table.ParseTable();
 
             string test = table.Rows.First().Values.First().Value;
