@@ -1,5 +1,5 @@
-﻿	Name		|		Date		|		Description					|	Actions		|		User		|
-Jacek Nikitiuk	|	18.08.1985		|Test description for 11 this row	|	[IGNORE]	|	dummy user		|
-Jacek Nikitiuk	|	18.08.1985		|Test description for 2 this row	|	[IGNORE]	|	dummy user2		|
-Jacek Nikitiuk	|	18.08.1985		|Test description for 55 this row	|	[IGNORE]	|	dummy1 user3	|
-Jacek Nikitiuk	|	18.08.1985		|Test description for 3 this row	|	[IGNORE]	|	dummy3 user4	|
+﻿	Name		|		Date		    |		Description					          |	Actions		|		User		    |
+Jacek	    |	18.08.1985		|Test description for 11 this row	|	[IGNORE]	|	dummy user		|
+Jacek	    |	18.08.1985		|Test description for 2 this row	|	[IGNORE]	|	dummy user2		|
+Jacek	    |	18.08.1985		|Test description for 55 this row	|	[IGNORE]	|	dummy1 user3	|
+Jacek   	|	18.08.1985		|Test description for 3 this row	|	[IGNORE]	|	dummy3 user4	|
